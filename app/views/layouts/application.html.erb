@@ -16,8 +16,14 @@
         <li>
           <%= link_to "Log out", destroy_admin_session_path, method: :delete %>
         </li>
+      <% elsif customer_signed_in? %>
+        <li>
+          <%= link_to "Log out", destroy_customer_session_path, method: :delete %>
+        </li>
       <% else %>
-        <p>a</p>
+        <li>
+          <%= link_to "ログイン", new_customer_session_path %>
+        </li>
       <% end %>
       
     </header>
