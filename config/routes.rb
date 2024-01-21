@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get 'customers/information/edit' => 'customers#edit', as: 'information_edit'
     patch 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch 'customers/withdraw' => 'custoners#withdraw'
+    patch 'customers/withdraw' => 'customers#withdraw'
     
     resources :orders, only: [:new, :index, :show, :create]
     post 'orders/confirm' => 'orders#confirm', as: 'confirm'
