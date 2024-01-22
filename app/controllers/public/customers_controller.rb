@@ -15,10 +15,17 @@ class Public::CustomersController < ApplicationController
     redirect_to my_page_path
   end
   
+  def withdraw
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_active: false)
+    reset_session
+    redirect_to new_customer_registration_path
+  end
+  
   private
   
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email, :is_active)
   end
   
 end
