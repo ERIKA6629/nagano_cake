@@ -12,16 +12,28 @@
 
   <body>
     <header>
+      <%= image_tag 'LOGO.jpeg', size: "100x30" %>
       <% if admin_signed_in? %>
+        <li>
+          <%= link_to "商品一覧", admin_items_path %>
+        </li>
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
         </li>
       <% elsif customer_signed_in? %>
         <li>
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
           <%= link_to "マイページ", my_page_path %>
         </li>
+        <li>
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+        </li>
       <% else %>
+        <li>
+          <%= link_to "About", public_about_path %>
+        </li>
+        <li>
+          <%= link_to "新規登録", new_customer_registration_path %>
+        </li>
         <li>
           <%= link_to "ログイン", new_customer_session_path %>
         </li>
