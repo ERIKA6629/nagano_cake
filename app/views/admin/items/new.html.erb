@@ -1,0 +1,20 @@
+<p>商品新規登録</p>
+<%= form_with model: @item, url: admin_items_path do |f| %>
+  <p>商品画像</p>
+  <%= f.file_field :image, accept: "image/*" %>
+  <p>商品名</p>
+  <%= f.text_field :name %>
+  <p>商品説明</p>
+  <%= f.text_field :introduction %>
+  <p>税抜価格</p>
+  <%= f.text_field :price %>円
+  
+  <p>販売ステータス</p>
+  <%= f.radio_button :is_sold_out, false %>
+  <%= f.label :is_sold_out, "販売中" %>
+  <%= f.radio_button :is_sold_out, true %>
+  <%= f.label :is_sold_out, "販売停止中" %><br>
+  
+  <%= f.submit '新規登録' %>
+  
+<% end %>
