@@ -20,7 +20,7 @@
         <% end %>
       </td>
       <td>
-        <span><%= f.price %></span>
+        <span><%= f.price.to_s(:delimited) %></span>
       </td>
     
       <% if f.is_sold_out == false %>
@@ -35,3 +35,5 @@
     </tr>
   <% end %>
 </table>
+
+<%= paginate @items %>
