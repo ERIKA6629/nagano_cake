@@ -1,0 +1,11 @@
+<p>商品一覧</p>
+(全<%= @items_count  %>件)
+<% @items.each do |f| %>
+  <% if f.is_sold_out ==false %>
+    <%= image_tag f.image, size: "100x100" %><br>
+    <%= f.name %>
+    ¥<%= f.price.to_s(:delimited) %>
+  <% end %>
+<% end %>
+
+<%= paginate @items %>
