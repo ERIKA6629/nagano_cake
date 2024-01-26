@@ -1,24 +1,50 @@
 <p>商品編集</p>
-
-<%= form_with model: @item, url:admin_item_path(@item.id) do |f| %>
-
-  <p>商品画像</p>
-  <%= f.file_field :image, accept: "image/*" %>
-  
-  <p>商品名</p>
-  <%= f.text_field :name %>
-  
-  <p>商品説明</p>
-  <%= f.text_field :introduction %>
-  
-  <p>税抜価格</p>
-  <%= f.text_field :price %>
-  
-  <p>販売ステータス</p>
-  <%= f.radio_button :is_sold_out, false %>
-  <%= f.label :is_sold_out, "販売中" %>
-  <%= f.radio_button :is_sold_out, true %>
-  <%= f.label :is_sold_out, "販売停止中" %>
-  <br>
-  <%= f.submit '変更を保存' %>
-<% end %>
+<table>
+  <%= form_with model: @item, url:admin_item_path(@item.id) do |f| %>
+    <tr>
+      <td>
+        <p>商品画像</p>
+      </td>
+      <td>
+        <%= f.file_field :image, accept: "image/*" %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>商品名</p>
+      </td>
+      <td>
+        <%= f.text_field :name %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>商品説明</p>
+      </td>
+      <td>
+        <%= f.text_field :introduction %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>税抜価格</p>
+      </td>
+      <td>
+        <%= f.text_field :price %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>販売ステータス</p>
+      </td>
+      <td>
+        <%= f.radio_button :is_sold_out, false %>
+        <%= f.label :is_sold_out, "販売中" %>
+        <%= f.radio_button :is_sold_out, true %>
+        <%= f.label :is_sold_out, "販売停止中" %>
+      </td>
+    </tr>
+    <br>
+    <%= f.submit '変更を保存' %>
+  <% end %>
+</table>
