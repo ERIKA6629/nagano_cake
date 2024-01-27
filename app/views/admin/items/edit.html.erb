@@ -1,6 +1,6 @@
 <p>商品編集</p>
-<table>
-  <%= form_with model: @item, url:admin_item_path(@item.id) do |f| %>
+  <%= form_with model: @item, url: admin_item_path do |f| %>
+  <table>
     <tr>
       <td>
         <p>商品画像</p>
@@ -44,7 +44,8 @@
         <%= f.label :is_sold_out, "販売停止中" %>
       </td>
     </tr>
-    <br>
-    <%= f.submit '変更を保存' %>
+    <td>
+      <%= f.submit '変更を保存' %>
+    </td>
+  </table>
   <% end %>
-</table>
