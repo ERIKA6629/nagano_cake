@@ -5,5 +5,9 @@ class Public::ItemsController < ApplicationController
     @items_count = @items.count{|i| i.is_sold_out? === false}
     @items = Item.page(params[:page]).per(12)
   end
+  
+  def show
+    @item = Item.find(params[:id])
+  end
 
 end

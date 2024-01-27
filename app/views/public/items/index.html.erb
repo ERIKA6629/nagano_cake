@@ -2,7 +2,10 @@
 (全<%= @items_count  %>件)
 <% @items.each do |f| %>
   <% if f.is_sold_out ==false %>
-    <%= image_tag f.image, size: "100x100" %><br>
+    <%= link_to item_path(f.id) do %>
+      <%= image_tag f.image, size: "100x100" %>
+    <% end %>
+    <br>
     <%= f.name %>
     ¥<%= f.price.to_s(:delimited) %>
   <% end %>

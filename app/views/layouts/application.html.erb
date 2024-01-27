@@ -12,7 +12,11 @@
 
   <body>
     <header>
-      <%= image_tag 'LOGO.jpeg', size: "100x30" %>
+      
+      <%= link_to public_top_path do %>
+        <%= image_tag 'LOGO.jpeg', size: "100x30" %>
+      <% end %>
+      
       <% if admin_signed_in? %>
         <li>
           <%= link_to "商品一覧", admin_items_path %>
