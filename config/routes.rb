@@ -30,9 +30,10 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
     
-    resources :orders, only: [:new, :index, :show, :create]
     post 'orders/confirm' => 'orders#confirm', as: 'confirm'
     get 'orders/complete' => 'orders#complete', as: 'complete'
+    resources :orders, only: [:new, :index, :show, :create]
+    
   end
   
   namespace :admin do
