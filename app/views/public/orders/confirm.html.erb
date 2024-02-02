@@ -1,4 +1,43 @@
 <p>注文情報確認</p>
+<table>
+  <thread>
+    <th colspan="2">商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+  </thread>
 <% @orders.each do |f| %>
-  <%= f.item.name %>
+  <tbody>
+    <td>
+      <%= image_tag f.item.image, size: "50x50" %>
+    </td>
+    <td>
+      <%= f.item.name %>
+    </td>
+    <td>
+      <%= f.item.with_tax_price.to_s(:delimited) %>
+    </td>
+    <td>
+      <%= f.amount %>
+    </td>
+    <td>
+      <%= f.subtotal.to_s(:delimited) %>
+    </td>
+  </tbody>
+  <% @total_price += f.subtotal.to_i %>
 <% end %>
+
+  <tbody>
+    <tr>
+      <td>送料</td>
+      <td><%= @shipping_fee %></td>
+    </tr>
+    <tr>
+      <td>商品合計</td>
+      <td><%= @total_price.to_s(:delimited) %></td>
+    </tr>
+  </tbody>
+</table>
+<p>支払い方法 <%= @order.payment_method_i18n %></p> 
+  <p><%= "〒" + @order.postal_code + " " + @order.address %></p>
+  <p><%= @order.name %></p>

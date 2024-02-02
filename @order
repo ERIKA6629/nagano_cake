@@ -1,0 +1,19 @@
+
+[1mFrom:[0m /home/ec2-user/environment/nagano_cake/app/controllers/public/orders_controller.rb:22 Public::OrdersController#confirm:
+
+     [1;34m8[0m: [32mdef[0m [1;34mconfirm[0m
+     [1;34m9[0m:   @orders = current_customer.cart_items
+    [1;34m10[0m:   @order = [1;34;4mOrder[0m.new(order_params)
+    [1;34m11[0m:   @shipping_fee = [1;34m800[0m
+    [1;34m12[0m:   @total_price = [1;34m0[0m
+    [1;34m13[0m:   [32mif[0m params[[33m:order[0m][[33m:address_type[0m] == [31m[1;31m"[0m[31mregistered_address[1;31m"[0m[31m[0m
+    [1;34m14[0m:     @order.postal_code = current_customer.postal_code
+    [1;34m15[0m:     @order.address = current_customer.address
+    [1;34m16[0m:     @order.name = current_customer.last_name + current_customer.first_name
+    [1;34m17[0m:   [32melsif[0m params[[33m:order[0m][[33m:address_type[0m] == [31m[1;31m"[0m[31mnew_address[1;31m"[0m[31m[0m
+    [1;34m18[0m:     binding.pry
+    [1;34m19[0m:     [32mreturn[0m
+    [1;34m20[0m:   [32mend[0m
+    [1;34m21[0m:   
+ => [1;34m22[0m: [32mend[0m
+
