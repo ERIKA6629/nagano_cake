@@ -27,17 +27,7 @@
             <% @total_amount = 0 %>
           </td>
           <td>
-            <% if f.status == 0 %>
-              <%= Order.status_methods_i18n[:waiting_payment] %>
-            <% elsif f.status == 1 %>
-              <%= Order.status_methods_i18n[:confirmed_payment] %>
-            <% elsif f.status == 2 %>
-              <%= Order.status_methods_i18n[:is_producing] %>
-            <% elsif f.status == 3 %>
-              <%= Order.status_methods_i18n[:prepareing_shipping] %>
-            <% elsif f.status == 4 %>
-              <%= Order.status_methods_i18n[:confirmed_shipping] %>
-            <% end %>
+            <%= f.status_i18n %>
           </td>
         </tr>
     <% end %>

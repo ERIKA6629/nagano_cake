@@ -29,7 +29,7 @@
     <td>注文ステータス</td>
     <td>
       <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
-        <%= f.select :status, Order.status_methods.keys.map { |k| [t("enums.order.status_method.#{k}"), k] } %>
+        <%= f.select :status, Order.statuses.keys.map { |k| [t("enums.order.status.#{k}"), k] } %>
       <% end %>
     </td>
   </tr>
