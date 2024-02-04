@@ -7,37 +7,39 @@
     <th>注文ステータス</th>
   </thread>
   <tbody>
-    <% @orders.each do |f| %>
-    <tr>
-      <td>
-        <%= f.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-      </td>
-      <td>
-        <%= f.customer.last_name + f.customer.first_name %>
-      </td>
-      <td>
-        <% @order_details.each do |t| %>
-          <% if f.id == t.order_id %>
-            <% @total_amount += t.amount %>
-          <% end %>
-        <% end %> 
-        <%= @total_amount %>
-        <% @total_amount = 0 %>
-      </td>
-      <td>
-        <% if f.status == 0 %>
-          <%= Order.status_methods_i18n[:waiting_payment] %>
-        <% elsif f.status == 1 %>
-          <%= Order.status_methods_i18n[:confirmed_payment] %>
-        <% elsif f.status == 2 %>
-          <%= Order.status_methods_i18n[:is_producing] %>
-        <% elsif f.status == 3 %>
-          <%= Order.status_methods_i18n[:prepareing_shipping] %>
-        <% elsif f.status == 4 %>
-          <%= Order.status_methods_i18n[:confirmed_shipping] %>
-        <% end %>
-      </td>
-    </tr>
+      <% @orders.each do |f| %>
+        <tr>
+          <td>
+            <%= link_to admin_order_path(f.id) do %>
+              <%= f.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+            <% end %>
+          </td>
+          <td>
+            <%= f.customer.last_name + f.customer.first_name %>
+          </td>
+          <td>
+            <% @order_details.each do |t| %>
+              <% if f.id == t.order_id %>
+                <% @total_amount += t.amount %>
+              <% end %>
+            <% end %> 
+            <%= @total_amount %>
+            <% @total_amount = 0 %>
+          </td>
+          <td>
+            <% if f.status == 0 %>
+              <%= Order.status_methods_i18n[:waiting_payment] %>
+            <% elsif f.status == 1 %>
+              <%= Order.status_methods_i18n[:confirmed_payment] %>
+            <% elsif f.status == 2 %>
+              <%= Order.status_methods_i18n[:is_producing] %>
+            <% elsif f.status == 3 %>
+              <%= Order.status_methods_i18n[:prepareing_shipping] %>
+            <% elsif f.status == 4 %>
+              <%= Order.status_methods_i18n[:confirmed_shipping] %>
+            <% end %>
+          </td>
+        </tr>
     <% end %>
   </tbody>
 
