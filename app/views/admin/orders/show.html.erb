@@ -28,8 +28,55 @@
   <tr>
     <td>注文ステータス</td>
     <td>
-      <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
-        <%= f.select :status, Order.statuses.keys.map { |k| [t("enums.order.status.#{k}"), k] } %>
+      <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+        <%= f.select :status, Order.statuses.keys.map { |k| [t("enums.order.status.#{k}"), k] }, selected: @order.status %>
+        <%= f.submit '更新' %>
       <% end %>
     </td>
   </tr>
+</table>
+
+<table>
+  <thread>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th>製作ステータス</th>
+    <th></th>
+  </thread>
+  <tbody>
+    <% @order_detail.each do |i| %>
+      <tr>
+        <td><%= i.item.name %></td>
+        <td><%= i.price.to_s(:delimited) %></td>
+        <td><%= i.amount %></td>
+        <td><%= (i.price * i.amount).to_s(:delimited) %></td>
+        <%= form_with model: @order_detail, url: admin_order_detail_path(i.id), method: :patch do |f| %>
+        <td>
+          <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |k| [t("enums.order_detail.making_status.#{k}"), k] }, selected: i.making_status %>
+        </td>
+        <td>
+          <%= f.submit '更新' %>
+        </td>
+        <% end %>
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <tr>
+    <td>商品合計</td>
+    <td><%= (@order.total_price - @order.shipping_fee).to_s(:delimited) %>円</td>
+  </tr>
+  <tr>
+    <td>送料</td>
+    <td><%= @order.shipping_fee %>円</td>
+  </tr>
+  <tr>
+    <td>請求金額合計</td>
+    <td><%= @order.total_price.to_s(:delimited) %>円</td>
+  </tr>
+</table>

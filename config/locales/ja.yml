@@ -11,6 +11,13 @@ ja:
         is_producing: "製作中"
         prepareing_shipping: "発送準備中"
         confirmed_shipping: "発送済み"
+  
+    order_detail:
+      making_status:
+        do_not_start: "着手不可"
+        waiting_production: "製作待ち"
+        in_production: "製作中"
+        production_completed: "製作完了"
     
   activerecord:
     errors:
