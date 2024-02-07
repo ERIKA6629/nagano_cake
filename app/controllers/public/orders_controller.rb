@@ -40,6 +40,10 @@ class Public::OrdersController < ApplicationController
     redirect_to complete_path
   end
   
+  def index
+    @order = current_customer.orders
+  end
+  
   def show
   end
   

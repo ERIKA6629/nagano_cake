@@ -1,1 +1,35 @@
-<p>public注文履歴</p>
+<p>注文履歴一覧</p>
+
+<table>
+  <thread>
+    <th>注文日</th>
+    <th>配送先</th>
+    <th>注文商品</th>
+    <th>支払金額</th>
+    <th>ステータス</th>
+    <th>注文詳細</th>
+  </thread>
+  
+  <tbody>
+    <% @order.each do |order| %>
+      <tr>
+        <td>
+          <%= order.created_at.strftime('%Y/%m/%d') %>
+        </td>
+        <td>
+          〒<%= order.postal_code %><br>
+          <%= order.address %><br>
+          <%= order.name %>
+        </td>
+        <td>
+          <% order.order_details.each do |order_detail| %>
+            <%= order_detail.item.name %><br>
+          <% end %>
+        </td>
+        <td>
+          <%= order.total_price.to_s(:delimited) %>円
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
