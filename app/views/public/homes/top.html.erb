@@ -4,3 +4,8 @@
 <p>購入には会員登録が必要になります。</p>
 
 <h2>新着商品</h2>
+<% @items.each do |f| %>
+  <%= image_tag f.image, size: "120x120" %>
+  <p><%= f.name %></p>
+  <p>¥<%= f.with_tax_price.to_s(:delimited) %></p>
+<% end %>
