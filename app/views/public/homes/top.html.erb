@@ -5,7 +5,11 @@
 
 <h2>新着商品</h2>
 <% @items.each do |f| %>
-  <%= image_tag f.image, size: "120x120" %>
-  <p><%= f.name %></p>
-  <p>¥<%= f.with_tax_price.to_s(:delimited) %></p>
+  <%= link_to item_path(f) do %>
+    <%= image_tag f.image, size: "120x120" %>
+    <p><%= f.name %></p>
+    <p>¥<%= f.with_tax_price.to_s(:delimited) %></p>
+  <% end %>
 <% end %>
+
+<%= link_to "全ての商品を見る>", items_path %>
