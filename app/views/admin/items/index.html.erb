@@ -2,12 +2,12 @@
 <%= link_to "+", new_admin_item_path %>
 
 <table>
-  <tr>
+  <thead>
     <th>商品ID</th>
     <th>商品名</th>
     <th>税抜価格</th>
     <th>ステータス</th>
-  </tr>
+  </thead>
   
   <% @items.each do |f| %>
     <tr>

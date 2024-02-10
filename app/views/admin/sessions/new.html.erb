@@ -2,21 +2,23 @@
   
   <div class="row">
     <div class="col-3"></div>
-      <span class="bg-light fs-3 p-3 ">管理者ログイン</span>
+    <span class="bg-light fs-3 p-3 ">管理者ログイン</span>
   </div>
   
   <%= form_with model: @admin, url: admin_session_path do |f| %>
     <div class="field mt-5">
       <div class="row">
         <span class="col-6 text-right"><%= f.label :メールアドレス %></span>
-        <span class="col-6"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></span>
+        <span class="col-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        </span>
       </div>
     </div>
     
     <div class="field mt-5">
       <div class="row">
         <span class="col-6 text-right"><%= f.label :パスワード %></span>
-        <span class="col-6"><%= f.password_field :password, autocomplete: "current-password" %></span>
+        <span class="col-3"><%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %></span>
       </div>
     </div>
     
