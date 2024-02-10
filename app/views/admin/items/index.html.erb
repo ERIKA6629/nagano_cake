@@ -1,39 +1,50 @@
-<p>商品一覧</p>
-<%= link_to "+", new_admin_item_path %>
-
-<table>
-  <thead>
-    <th>商品ID</th>
-    <th>商品名</th>
-    <th>税抜価格</th>
-    <th>ステータス</th>
-  </thead>
-  
-  <% @items.each do |f| %>
-    <tr>
-      <td>
-        <span><%= f.id %></span>
-      </td>
-      <td>
-        <%= link_to admin_item_path(f) do %>
-          <%= f.name %>
-        <% end %>
-      </td>
-      <td>
-        <span><%= f.price.to_s(:delimited) %></span>
-      </td>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-6">
+      <span class="bg-light fs-3 p-2 ">商品一覧</span>
+    </div>
+    <div class="col-6">
+      <div class="d-flex justify-content-end">
+        <%= link_to "+", new_admin_item_path , class: 'btn btn-white shadow rounded-circle p-0" style="width:2rem;height:2rem;'%>
+      </div>
+    </div>
+  </div>
+  <table class="table mt-3 table-borderless">
+    <thead class="thead-light text-dark">
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ステータス</th>
+    </thead>
     
-      <% if f.is_sold_out == false %>
+    <% @items.each do |f| %>
+      <tr>
         <td>
-          <span>販売中</span>
+          <span><%= f.id %></span>
         </td>
-      <% else %>
         <td>
-          <span>販売停止中</span>
+          <%= link_to admin_item_path(f) do %>
+            <span class="text-dark"><%= f.name %></span>
+          <% end %>
         </td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+        <td>
+          <span><%= f.price.to_s(:delimited) %></span>
+        </td>
+      
+        <% if f.is_sold_out == false %>
+          <td>
+            <p class="text-success font-weight-bold">販売中</p>
+          </td>
+        <% else %>
+          <td>
+            <p class="text-secondary font-weight-bold">販売停止中</p>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
-<%= paginate @items %>
+<div class="pagination justify-content-center mb-2">
+  <%= paginate @items %>
+</div>

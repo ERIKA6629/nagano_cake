@@ -1,30 +1,64 @@
-<p>商品新規登録</p>
-
-<% if @item.errors.any? %>
-  <%= @item.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @item.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<div class="container mt-3 mb-3">
+  <div class="row mt-3">
+    <span class="bg-light fs-3 p-2">商品新規登録</span>
+  </div>
+  
+  <div class="row">
+    <% if @item.errors.any? %>
+      <%= @item.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @item, url: admin_items_path do |f| %>
-  <p>商品画像</p>
-  <%= f.file_field :image, accept: "image/*" %>
-  <p>商品名</p>
-  <%= f.text_field :name %>
-  <p>商品説明</p>
-  <%= f.text_field :introduction %>
-  <p>税抜価格</p>
-  <%= f.text_field :price %>円
+  </div>
   
-  <p>販売ステータス</p>
-  <%= f.radio_button :is_sold_out, false %>
-  <%= f.label :is_sold_out, "販売中" %>
-  <%= f.radio_button :is_sold_out, true %>
-  <%= f.label :is_sold_out, "販売停止中" %><br>
-  
-  <%= f.submit '新規登録' %>
-  
-<% end %>
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+    <div class="row mt-3 d-flex align-items-center">
+      <div class="col-2">商品画像</div>
+      <div class="col-10">
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+    </div>
+    <div class="row mt-3 d-flex align-items-center">
+      <div class="col-2">商品名</div>
+      <div class="col-4">
+        <%= f.text_field :name, placeholder: "商品名", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2 pt-2">商品説明</div>
+      <div class="col-4">
+        <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: "form-control", rows: "5" %>
+      </div>
+    </div>
+    <div class="row mt-3 d-flex align-items-center">
+      <div class="col-2">
+        <span>税抜価格</span>
+      </div>
+      <div class="col-4">
+        <%= f.text_field :price, placeholder: "1000", class: "form-control" %>
+      </div>
+      <span>円</span>
+    </div>
+    
+    <div class="row mt-3">
+      <div class="col-2">
+        <p>販売ステータス</p>
+      </div>
+      <div class="col-4">
+        <%= f.radio_button :is_sold_out, false, class: "bg-dark" %>
+        <%= f.label :is_sold_out, "販売中" %>
+        <%= f.radio_button :is_sold_out, true %>
+        <%= f.label :is_sold_out, "販売停止中" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="mx-auto">
+        <%= f.submit '新規登録', class: "btn btn-success px-4" %>
+      </div>
+    </div>
+    
+  <% end %>
+</div>
