@@ -1,9 +1,11 @@
-<div class="container mt-3 mb-3">
+<div class="container my-3 mx-auto">
   <div class="row mt-3">
-    <span class="bg-light fs-3 p-2">商品新規登録</span>
+    <div class="col-1"></div>
+    <h2 class="bg-light p-3">商品新規登録</h2>
   </div>
   
   <div class="row">
+    <div class="col-2"></div>
     <% if @item.errors.any? %>
       <%= @item.errors.count %>件のエラーが発生しました
       <ul>
@@ -16,24 +18,28 @@
   
   <%= form_with model: @item, url: admin_items_path do |f| %>
     <div class="row mt-3 d-flex align-items-center">
+      <div class="col-2"></div>
       <div class="col-2">商品画像</div>
-      <div class="col-10">
+      <div class="col-8">
         <%= f.file_field :image, accept: "image/*" %>
       </div>
     </div>
     <div class="row mt-3 d-flex align-items-center">
+      <div class="col-2"></div>
       <div class="col-2">商品名</div>
       <div class="col-4">
         <%= f.text_field :name, placeholder: "商品名", class: "form-control" %>
       </div>
     </div>
     <div class="row mt-3">
+      <div class="col-2"></div>
       <div class="col-2 pt-2">商品説明</div>
       <div class="col-4">
         <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: "form-control", rows: "5" %>
       </div>
     </div>
     <div class="row mt-3 d-flex align-items-center">
+      <div class="col-2"></div>
       <div class="col-2">
         <span>税抜価格</span>
       </div>
@@ -44,6 +50,7 @@
     </div>
     
     <div class="row mt-3">
+      <div class="col-2"></div>
       <div class="col-2">
         <p>販売ステータス</p>
       </div>

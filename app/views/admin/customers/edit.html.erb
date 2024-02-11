@@ -1,85 +1,90 @@
-<% if @customer.errors.any? %>
-  <%= @customer.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @customer.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container my-4 mx-auto">
+  <% if @customer.errors.any? %>
+    <%= @customer.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-<%= @customer.last_name + @customer.first_name %>さんの会員情報編集
+  <div class="row mt-3">
+    <h2 class="bg-light px-3"><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h2>
+  </div>
 
   <%= form_with model: @customer, url: admin_customer_path do |f| %>
-  <table>
-    <tr>
-      <td>会員ID</td>
-      <td><%= @customer.id %></td>
-    </tr>
-    <tr>
-      <td>
-        <p>氏名</p>
-      </td>
-      <td>
+    <div class="row mt-3">
+      <div class="col-2">
+        会員ID
+      </div>
+      <div class="col-4">
+        <%= @customer.id %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
+        氏名
+      </div>
+      <div class="col-6">
         <%= f.text_field :last_name %>
-      </td>
-      <td>
         <%= f.text_field :first_name %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>フリガナ</p>
-      </td>
-      <td>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
+        フリガナ
+      </div>
+      <div class="col-6">
         <%= f.text_field :last_name_kana %>
-      </td>
-      <td>
         <%= f.text_field :first_name_kana %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>郵便番号</p>
-      </td>
-      <td>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
+        郵便番号
+      </div>
+      <div class="col-6">
         <%= f.text_field :postal_code %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>住所</p>
-      </td>
-      <td>
-        <%= f.text_field :address %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>電話番号</p>
-      </td>
-      <td>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
+        住所
+      </div>
+      <div class="col-6">
+        <%= f.text_field :address, class: "form-control border-dark form-control-sm" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
+        電話番号
+      </div>
+      <div class="col-6">
         <%= f.text_field :telephone_number %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>メールアドレス</p>
-      </td>
-      <td>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
+        メールアドレス
+      </div>
+      <div class="col-6">
         <%= f.text_field :email %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>会員ステータス</p>
-      </td>
-      <td>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
+        会員ステータス
+      </div>
+      <div class="col-6">
         <%= f.radio_button :is_active, true %>
         <%= f.label :is_active, "有効", for: "customer_is_active_true" %>
         <%= f.radio_button :is_active, false %>
         <%= f.label :is_active, "退会", for: "customer_is_active_false" %>
-      </td>
-    </tr>
-    </table>
-      <%= f.submit '変更を保存' %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2"></div>
+      <%= f.submit '変更を保存', class: "btn btn-success px-3" %>
+    </div>
   <% end %>
+</div>

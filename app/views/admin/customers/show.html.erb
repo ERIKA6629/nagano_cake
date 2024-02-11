@@ -1,74 +1,81 @@
-<%= @customer.last_name + @customer.first_name %>さんの会員情報詳細
-<table>
-  <tr>
-    <td>
+<div class="container my-3 mx-auto">
+  
+  <div class="row mt-3">
+    <h2 class="bg-light px-3"><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h2>
+  </div>
+  
+  <div class="row mt-3">
+    <div class="col-2">
       <p>会員ID</p>
-    </td>
-    <td>
+    </div>
+    <div class="col-4">
       <%= @customer.id %>
-    </td>
-  </tr>
-  <tr>
-    <td>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-2">
       <p>氏名</p>
-    </td>
-    <td>
+    </div>
+    <div class="col-4">
       <%= @customer.last_name + "　" + @customer.first_name %>
-    </td>
-  </tr>
-  <tr>
-    <td>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-2">
       <p>フリガナ</p>
-    </td>
-    <td>
+    </div>
+    <div class="col-4">
       <%= @customer.last_name_kana + "　" + @customer.first_name_kana %>
-    </td>
-  </tr>
-  <tr>
-    <td>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-2">
       <p>郵便番号</p>
-    </td>
-    <td>
+    </div>
+    <div class="col-4">
       <%= @customer.postal_code %>
-    </td>
-  </tr>
-  <tr>
-    <td>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-2">
       <p>住所</p>
-    </td>
-    <td>
+    </div>
+    <div class="col-4">
       <%= @customer.address %>
-    </td>
-  </tr>
-  <tr>
-    <td>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-2">
       <p>電話番号</p>
-    </td>
-    <td>
+    </div>
+    <div class="col-4">
       <%= @customer.telephone_number %>
-    </td>
-  </tr>
-  <tr>
-    <td>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-2">
       <p>メールアドレス</p>
-    </td>
-    <td>
+    </div>
+    <div class="col-4">
       <%= @customer.email %>
-    </.td>
-  </tr>
-  <tr>
-    <td>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-2">
       <p>会員ステータス</p>
-    </td>
-    <td>
+    </div>
+    <div class="col-4">
       <% if @customer.is_active == true %>
-        <p>有効</p>
+        <p class="text-success font-weight-bold">有効</p>
       <% else %>
-        <p>退会</p>
+        <p class="text-secondary font-weight-bold">退会</p>
       <% end %>
-    </td>
-  </tr>
-</table>
-
-<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
-<%= link_to "注文履歴一覧", admin_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+      <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
+    <div class="col-1"></div>
+      <%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-primary" %>
+  </div>
+</div>
