@@ -8,11 +8,11 @@
       <div class="col-3 mt-2">
         <%= link_to item_path(f.id) do %>
           <%= image_tag f.image, size: "100x100" %>
+          <br>
+          <span class="text-dark"><%= f.name %></span>
+          <br>
+          <span class="text-dark">¥<%= f.price.to_s(:delimited) %></span>
         <% end %>
-        <br>
-        <%= f.name %>
-        <br>
-        ¥<%= f.price.to_s(:delimited) %>
       </div>
     <% end %>
   </div>

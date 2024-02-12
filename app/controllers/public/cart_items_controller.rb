@@ -10,8 +10,14 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     else
       @cart_item.customer_id = current_customer.id
-      @cart_item.save
-      redirect_to cart_items_path
+      if @cart_item.save
+        redirect_to cart_items_path
+      else
+        @item = Item.find_by(params[:cart_item][:item_id])
+        @include_tax = @item.price * 1.1
+        @include_tax = @include_tax.to_i
+        render template: "public/items/show"
+      end
     end
   end
   

@@ -22,6 +22,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @include_tax = @item.price * 1.1
     @include_tax = @include_tax.to_i
+    @cart_item = CartItem.new
   end
   
   def edit
