@@ -1,15 +1,27 @@
-<p>ようこそ、ながのCAKEへ！</p>
-<p>このサイトは、ケーキ販売のECサイトになります。</p>
-<p>会員でない方も商品の閲覧はできますが、</p>
-<p>購入には会員登録が必要になります。</p>
-
-<h2>新着商品</h2>
-<% @items.each do |f| %>
-  <%= link_to item_path(f) do %>
-    <%= image_tag f.image, size: "120x120" %>
-    <p><%= f.name %></p>
-    <p>¥<%= f.with_tax_price.to_s(:delimited) %></p>
-  <% end %>
-<% end %>
-
-<%= link_to "全ての商品を見る>", items_path %>
+<div class="container my-3 mx-auto">
+  <div class="row" style="background-image: url(assets/top-background-imag.jpeg); background-size: cover; background-repeat: no-repeat; height: 500px;">
+    <h4 class="col-7 mx-auto d-flex align-items-center" >
+      ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </h4>
+  </div>
+  <div class="row mt-1">
+    <h2>新着商品</h2>
+  </div>
+  <div class="row mt-1">
+    <% @items.each do |f| %>
+      <div class="col-3">
+      <%= link_to item_path(f) do %>
+        <%= image_tag f.image, size: "120x120" %>
+        <p class="text-dark"><%= f.name %></p>
+        <p class="text-dark">¥<%= f.with_tax_price.to_s(:delimited) %></p>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row justify-content-end">
+      <%= link_to "全ての商品を見る>", items_path %>
+  </div>
+</div>
