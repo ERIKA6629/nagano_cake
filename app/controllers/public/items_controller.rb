@@ -1,9 +1,9 @@
 class Public::ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    @items = Item.where(is_sold_out: "false")
     @items_count = @items.count{|i| i.is_sold_out? === false}
-    @items = Item.page(params[:page]).per(12)
+    @items = @items.page(params[:page]).per(8)
   end
   
   def show

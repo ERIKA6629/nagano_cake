@@ -1,14 +1,22 @@
-<p>商品一覧</p>
-(全<%= @items_count  %>件)
-<% @items.each do |f| %>
-  <% if f.is_sold_out ==false %>
-    <%= link_to item_path(f.id) do %>
-      <%= image_tag f.image, size: "100x100" %>
+<div class="container my-3 mx-auto">
+  <div class="row mt-3">
+    <h2>商品一覧</h2><div class="d-flex align-items-end h4">　(全<%= @items_count  %>件)</div>
+  </div>
+  
+  <div class="row">
+    <% @items.each do |f| %>
+      <div class="col-3 mt-2">
+        <%= link_to item_path(f.id) do %>
+          <%= image_tag f.image, size: "100x100" %>
+        <% end %>
+        <br>
+        <%= f.name %>
+        <br>
+        ¥<%= f.price.to_s(:delimited) %>
+      </div>
     <% end %>
-    <br>
-    <%= f.name %>
-    ¥<%= f.price.to_s(:delimited) %>
-  <% end %>
-<% end %>
-
-<%= paginate @items %>
+  </div>
+  <div class="pagination justify-content-center my-3">
+    <%= paginate @items %>
+  </div>
+</div>
