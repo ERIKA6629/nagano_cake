@@ -1,41 +1,62 @@
-<p>注文情報入力</p>
-
-<%= form_with model: @order, url: confirm_path, method: :post do |f| %>
-  <p>支払方法</p>
-  <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-  <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
-  <br>
-  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-  <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
-
-  <p>お届け先</p>
-    <%= f.radio_button :address_type, "registered_address" %>
-    <%= f.label :address_type, "登録済みの住所" %>
-    <p><%= "〒" + current_customer.postal_code + " " + current_customer.address %></p>
-    <p><%= current_customer.last_name + current_customer.first_name %></p>
-
-  <p>新しいお届け先</p>
-    <%= f.radio_button :address_type, "new_address" %>
-    <%= f.label :address_type, "新しい住所" %>
-    <table>
-      <tr>
-        <td>郵便番号(ハイフンなし)</td>
-        <td>
-          <%= f.text_field :postal_code %>
-        </td>
-      </tr>
-      <tr>
-        <td>住所</td>
-        <td>
-          <%= f.text_field :address %>
-        </td>
-      </tr>
-      <tr>
-        <td>宛名</td>
-        <td>
-          <%= f.text_field :name %>
-        </td>
-      </tr>
-    </table>
-  <%= f.submit "注文確認画面に進む" %>
-<% end %>
+<div class="container my-5 mx-auto">
+  
+  <div class="row mt-3">
+    <h2 class="bg-light text-center">注文情報入力</h2>
+  </div>
+  
+  <%= form_with model: @order, url: confirm_path, method: :post do |f| %>
+    <div class="row mt-3">
+      <p class="h4">支払方法</p>
+    </div>
+    <div class="row mx-3">
+      <span class="align-middle"><%= f.radio_button :payment_method, Order.payment_methods.key(0) %></span>
+      <span class="align-middle"><%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %></span>
+    </div>
+    <div class="row mx-3">
+      <span class="align-middle"><%= f.radio_button :payment_method, Order.payment_methods.key(1) %></span>
+      <span class="align-middle"><%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %></span>
+    </div>
+    <div class="row mt-2">
+      <h4>お届け先</h4>
+    </div>
+    <div class="row mx-3 mt-1">
+      <span class="align-middle"><%= f.radio_button :address_type, "registered_address" %></span>
+      <span class="align-middle"><%= f.label :address_type, "ご自身の住所" %></span>
+    </div>
+    <div class="row mx-5">
+      <%= "〒" + current_customer.postal_code + " " + current_customer.address %><br>
+      <%= current_customer.last_name + current_customer.first_name %>
+    </div>
+    <div class="row mx-3 mt-1">
+      <span class="align-middle"><%= f.radio_button :address_type, "new_address" %></span>
+      <span class="align-middle"><%= f.label :address_type, "新しいお届け先" %></span>
+    </div>
+    <div class="row mx-5">
+      <div class="col-3">
+         郵便番号(ハイフンなし)
+      </div>
+      <div class="col-3">
+        <%= f.text_field :postal_code, placeholder: "0000000" %>
+      </div>
+    </div>
+    <div class="row mx-5 mt-2">
+      <div class="col-3">
+        住所
+      </div>
+      <div class="col-6">
+        <%= f.text_field :address, class: "form-control border-dark", style: "height: 30px;", placeholder: "東京都渋谷区代々木１−１" %>
+      </div>
+    </div>
+    <div class="row mx-5 mt-2">
+      <div class="col-3">
+        宛名
+      </div>
+      <div class="col-3">
+        <%= f.text_field :name, placeholder: "令和道子" %>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <span class="mx-auto"><%= f.submit "確認画面へ進む", class: "btn btn-primary" %></span>
+    </div>
+  <% end %>
+</div>
