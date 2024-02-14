@@ -1,73 +1,72 @@
-<h2>会員情報編集</h2>
+<div class="container my-5 mx-auto">
+  
+  <div class="row mt-3">
+    <h2 class="bg-light text-center">会員情報編集</h2>
+  </div>
 
-<%= form_with model: @customer, url: customers_information_path do |f| %>
-  <table>
-    <tr>
-      <td>
+  <%= form_with model: @customer, url: customers_information_path do |f| %>
+    <div class="row mt-3">
+      <div class="col-2">
         氏名
-      </td>
-      <td>
-          <%= f.text_field :last_name %>
-      </td>
-      <td>
-          <%= f.text_field :first_name %>
-      </td>
-    </tr>
-  
-    <tr>
-      <td>
+      </div>
+      <div class="col-3">
+          <%= f.text_field :last_name, class: "form-control border-dark" %>
+      </div>
+      <div class="col-3">
+        <%= f.text_field :first_name, class: "form-control border-dark" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
         フリガナ
-      </td>
-      <td>
-          <%= f.text_field :last_name_kana %>
-      </td>
-      <td>
-          <%= f.text_field :first_name_kana %>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
+      </div>
+      <div class="col-3">
+          <%= f.text_field :last_name_kana, class: "form-control border-dark" %>
+      </div>
+      <div class="col-3">
+          <%= f.text_field :first_name_kana, class: "form-control border-dark" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
         郵便番号
-      </td>
-      <td>
-          <%= f.text_field :postal_code %>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
+      </div>
+      <div class="col-3">
+        <%= f.text_field :postal_code, class: "form-control border-dark" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
         住所
-      </td>
-      <td>
-          <%= f.text_field :address %>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
+      </div>
+      <div class="col-8">
+          <%= f.text_field :address, class: "form-control border-dark" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
         電話番号
-      </td>
-      <td>
-          <%= f.text_field :telephone_number %>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
+      </div>
+      <div class="col-3"> 
+        <%= f.text_field :telephone_number, class: "form-control border-dark" %>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
         メールアドレス
-      </td>
-      <td>
-        <%= f.email_field :email %>
-      </td>
-    </tr>
+      </div>
+      <div class="col-3"> 
+        <%= f.email_field :email, class: "form-control border-dark" %>
+      </div>
+    </div>
     
-    
-  
-  </table>
-  
-  <%= f.submit '編集内容を保存' %>
-  
-<% end %>
-
-<%= link_to '退会する', unsubscribe_path %>
+    <div class="row mt-3">
+      <div class="col-2"></div>
+      <div class="col-3">
+        <%= f.submit '編集内容を保存', class: "btn btn-success px-5" %>
+      </div>
+      <div class="col-3"></div>
+      <%= link_to '退会する', unsubscribe_path, class: "btn btn-danger px-3" %>
+    </div>
+  <% end %>
+</div>
